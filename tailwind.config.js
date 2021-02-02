@@ -10,10 +10,37 @@ module.exports = {
 
     theme: {
         extend: {
+            colors: {
+                store1:{
+                    100: '#F4C6C4',
+                    200: '#D9B2B0',
+                    300: '#D6AFAD',
+                    400: '#c9a2a0',
+                    500: '#B99694',
+                    600: '#AD8D8B',
+                }, 
+                store2: '#e4bdb5',
+                store3: '#ffe1dd',
+                pastel:{
+                    100:'#fbe1e3',
+                    200:'#f4b3b3',
+                    300:'#f19898',
+                    400:'#ed8b8b',
+                    500:'#e9685b',
+                }
+            },
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                helloDancing: ['Dancing Script'],
+                hello:['hello']
             },
         },
+        // padding: {
+        //     sm: '8px',
+        //     md: '3.75rem',
+        //     lg: '24px',
+        //     xl: '48px',
+        //    },
         minHeight: {
             '0': '0',
             '1/4': '25%',
@@ -21,33 +48,12 @@ module.exports = {
             '3/4': '75%',
             'full': '100%',
            },
-        colors: {
-            transparent: 'transparent',
-            current: 'currentColor',
-            black: colors.black,
-            white: colors.white,
-            gray: colors.trueGray,
-            indigo: colors.indigo,
-            red: colors.red,
-            yellow: colors.yellow,
-            blue: colors.blue,
-            gray: colors.gray,
-            store1:{
-                100: '#F4C6C4',
-                200: '#D9B2B0',
-                300: '#D6AFAD',
-                400: '#c9a2a0',
-                500: '#B99694',
-                600: '#AD8D8B',
-            }, 
-            store2: '#e4bdb5',
-            store3: '#ffe1dd',
-        }
     },
 
     variants: {
         extend: {
             opacity: ['disabled'],
+            rotate:['group-hover']
         },
     },
 

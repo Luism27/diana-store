@@ -24,31 +24,51 @@
 
         <div class="min-h-screen bg-white">
             <!-- Page Heading -->
-            <header class="bg-white container  mx-auto justify-center hidden sm:flex">
+            {{-- <div class="grid grid-cols-2 grid-rows-1 md:grid-rows-2 md:grid-cols-8 lg:grid-cols-12 ">
+                <div class=" md:flex md:row-span-2 xs:absolute xs:left-0">
+                    <div class="hidden w-full text-4xl font-bold lg:px-6 md:flex md:items-center lg:col-span-11 text-store1-600">
+                        <a href="{{ route('home') }}">
+                            <x-jet-application-mark class="block w-auto h-9" />
+                        </a>
+                    </div>
+                    <div class="flex items-center object-center px-4 mx-auto text-4xl font-bold justify-items-center max-w-7xl sm:px-6 md:hidden text-store1-600">
+                        <a href="{{ route('home') }}">
+                            Diana Store
+                        </a>
+                    </div>
+                </div>
+
+                <header class="container z-0 justify-center hidden mx-auto md:col-span-7 lg:col-span-11 md:flex">
+                    <!-- Logo -->
+                    <div class="object-center px-4 pt-4 mx-auto text-4xl font-bold justify-items-center max-w-7xl md:flex md:items-center sm:px-6 lg:px-8 text-store1-600">
+                        <a href="{{ route('home') }}">
+                            <x-app-logo-name />
+                        </a>
+                    </div>
+                
+                </header>
+
+                @livewire('navigation-menu')
+            </div> --}}
+            
+            <header class="container z-0 justify-center hidden mx-auto md:col-span-7 lg:col-span-11 md:flex">
                 <!-- Logo -->
-                <div class=" object-centerr">
+                <div class="object-center px-4 pt-4 mx-auto text-4xl font-bold justify-items-center max-w-7xl md:flex md:items-center sm:px-6 lg:px-8 text-store1-600">
                     <a href="{{ route('home') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <x-app-logo-name />
                     </a>
                 </div>
             
             </header>
-            @livewire('navigation-menu')
 
+            @livewire('navigation-bar')
 
             <!-- Page Content -->
-            <main >
-                <div class="grid grid-cols-1 md:grid-cols-5">
-                    <div class=" hidden md:block col-span-1 pl-2">
-                        @livewire('side-bar-component')
-                    </div>
-                    <div class="mx-4 col-span-4 px-5">
-                        {{ $slot }}
-                    </div>
-                </div>
+            <main class="">
+                {{ $slot }}
                 <div class="fixed bottom-4 right-4">
                     <button
-                        class="text-black px-4 w-auto h-12 bg-store1-100 rounded-full hover:bg-store1-600 active:shadow-lg relative inset-0  shadow transition ease-in duration-200 focus:outline-none">
+                        class="relative inset-0 w-auto h-12 px-4 text-black transition duration-200 ease-in rounded-full shadow bg-store1-100 hover:bg-store1-600 active:shadow-lg focus:outline-none">
                         <i class="fas fa-comment-dots fa-lg"></i>
                   <span>Chat</span>
                 </button>

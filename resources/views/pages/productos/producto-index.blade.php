@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="grid grid-cols-1 gap-5 py-10 sm:grid-cols-2 lg:pr-40 xl:pr-80">
+    <div class="grid grid-cols-1 gap-5 py-10 mx-40 sm:grid-cols-2">
         @foreach ($productos as $i=>$producto)
             <div class=""> 
                 <x-card-producto >
@@ -22,6 +22,8 @@
                 </x-card-producto>
             </div> 
         @endforeach
-    </div>   
-    {{$productos->links()}}
+        <div class="col-span-2">
+            {{$productos->links()}}
+        </div>
+    </div> 
 </x-app-layout>

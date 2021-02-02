@@ -27,6 +27,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'numero',
+        'direccion',
+        'role_id',
+        'ciudade_id',
     ];
 
     /**
@@ -70,4 +74,15 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Models\Role');
     }
+
+    //Roles
+    public function hasRoleAdmin()
+    {
+        if($this->role->name == 'Administrador'){
+            return true;
+        }
+        return false;
+    }
+
+
 }

@@ -1,7 +1,7 @@
 <div class="relative" x-data="{ open: false }" @close.stop="open = false" @mouseover.away="open=false" class="flex items-center">
     <div @mouseenter="open = true" @click="open=true">
         <div class="flex -mr-2 md:fex">
-            <button  class="inline-flex justify-center p-2 transition duration-150 ease-in-out rounded-md text-store1-600 hover:text-gray-100 hover:bg-store1-600 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+            <button  class="justify-center block p-2 transition duration-150 ease-in-out rounded-md text-store1-600 hover:text-gray-100 hover:bg-store1-600 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
                 <i :class="{'hidden': open, 'inline-flex': ! open }" class="fas fa-bars fa-lg"></i>             
             </button >
         </div>

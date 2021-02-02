@@ -1,12 +1,12 @@
-<div class="relative" x-data="{ open: false }" @close.stop="open = false" @mouseover.away="open=false" class="flex items-center">
-    <div @mouseenter="open = true" @click="open=true">
+<div class="relative items-center block" x-data="{ open: false }" @close.stop="open = false" @mouseover.away="open=false">
+    <a href="{{route('categoria.index',$categoria)}}" @mouseenter="open = true" @click="open=true">
         <div class="flex -mr-2 md:fex ">
-            <a href="{{route('categoria.index',$categoria)}}" class="justify-center block p-2 transition duration-150 ease-in-out rounded-md lock text-store1-600 hover:text-gray-100 hover:bg-store1-600 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+            <div  class="justify-center w-full p-2 transition duration-150 ease-in-out rounded-md lock text-store1-600 hover:text-gray-100 hover:bg-store1-600 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
                 {{$name}}
                 <i class="right-0 fas fa-arrow-right fa-sm"></i>           
-            </a>
+            </div>
         </div>
-    </div>
+    </a>
 
     <div x-show="open"
             x-transition:enter="transition ease-out duration-200"
@@ -23,7 +23,7 @@
         <div class="bg-white rounded-md ring-1 ring-black ring-opacity-5 pl-7 py-7" >
             @foreach ($subcategorias as $subcategoria)
                 @if ($subcategoria)
-                    <div class="h-auto min-h-1/4 ">
+                    <div class="z-50 h-auto min-h-1/4">
                         <a href=" {{route('categoria.subcategoria',[$subcategoria->categoria,$subcategoria])}} ">{{$subcategoria->name}}</a>
                     </div> <hr class="mb-3">
                 @endif

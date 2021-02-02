@@ -1,0 +1,7 @@
+crear nuevas tablas
+
+Descuentos
+nuevos
+ncompras
+carrito
+favoritos

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -10,4 +12,69 @@
 
 .left-42{
     left: 10.4rem;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* inputs */
+.input{
+  @apply rounded-lg 
+}
+.input:focus{
+  @apply  ring ring-store1-200 ring-opacity-50 border-store1-300
+}
+/* Buttons */
+.btn{
+  @apply rounded-lg p-2 my-2
+}
+.btn:focus{
+  @apply outline-none
+}
+
+.btn-danger{
+  @apply bg-red-500 text-white
+}
+.btn-danger:hover{
+  @apply bg-red-700 text-white
+}
+
+.btn-warning{
+  @apply bg-yellow-400 
+}
+.btn-warning:hover{
+  @apply bg-yellow-600 
+}
+
+.btn-primary{
+  @apply bg-blue-400 
+}
+.btn-primary:hover{
+  @apply bg-blue-600 text-white
+}
+
+.btn-success{
+  @apply bg-green-400 
+}
+.btn-success:hover{
+  @apply bg-green-600 text-white
+}
+
+
+/* hide input arrow */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

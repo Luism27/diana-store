@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPageController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Livewire\Home;
@@ -28,6 +29,9 @@ Route::get('categoria/{categoria}/subcategoria/{subcategoria}',[CategoriaControl
 // Route::get('categoria/{categoria}', function ($categoria) {
 //     return $categoria;
 // });
+
+
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');

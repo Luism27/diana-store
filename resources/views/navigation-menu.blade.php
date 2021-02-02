@@ -1,46 +1,59 @@
 @php
+    $user = Auth::user()->role_id;
     $nav_links = [
         [
-            'name'=>'Home',
-            'route' => route('home'),
-            'active'=>request()->routeIs('home'),
+            'name'=>'Perfil',
+            'route' => route('profile.show'),
+            'active'=>request()->routeIs('profile.show'),
         ],
         [
-            'name'=>'Producto',
-            'route' => route('productos.index'),
-            'active'=> request()->routeIs('productos.*'),
+            'name'=>'Admin',
+            'route' => route('profile.admin.dashboard'),
+            'active'=> request()->routeIs('profile.admin.*'),
         ],
+
+
     ];
 @endphp
-<nav x-data="{ openn: false}" class="bg-white border-b border-gray-200 shadow pegado">
-
+<nav x-data="{ openn: false}" class="w-full pb-5  {{ request()->routeIs('profile.admin.*') ? ' bg-pastel-200' : 'bg-white'  }} {{ request()->routeIs('profile.admin.*') ? ' shadow-md' : ''  }}  pegado" >
+    {{-- {{$user}} --}}
     <!-- Primary Navigation Menu -->
     <div class="px-4 sm:px-1 lg:px-1" >
         <div class="flex justify-between h-16 ">
             <div class="flex">
                 {{-- rigth hamburguer --}}
-                <div class="flex md:items-center">
+                {{-- <div class="flex md:items-center">
                     @livewire('categoria-drop')
+                </div> --}}
+                <div class=" md:flex md:row-span-2 xs:absolute xs:left-0">
+                    <div  
+                        class="hidden text-4xl font-bold lg:px-6 md:flex md:items-center lg:col-span-11 text-store1-600"
+                        >
+                        <a href="{{ route('home') }}">
+                         <x-app-logo-name-movil class="pb-3" />
+                        </a>
+                    </div>
+                    <div class="items-center object-center px-4 mx-auto mt-1 text-4xl font-bold justify-items-center max-w-7xl sm:px-6 md:hidden text-store1-600">
+                        <a href="{{ route('home') }}">
+                            <x-app-logo-name-movil />
+                        </a>
+                    </div>
                 </div>
-                <div class="px-4 mx-auto text-4xl font-bold max-w-7xl md:flex md:items-center sm:px-6 lg:px-8 text-store1-600">
-                    <a href="{{ route('home') }}">
-                    Diana Store
-                    </a>
-                </div>
-
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 md:-my-px md:ml-10 md:flex">
                     
                     @foreach ($nav_links as $nav_link) 
-                        @auth
-                            <x-jet-nav-link href="{{ $nav_link['route']}}" :active="$nav_link['active']">
-                                {{ $nav_link['name'] }}
-                            </x-jet-nav-link>
-                        @else
-                            @if ($nav_link['name'] != "Dashboard")
-                            <x-jet-nav-link href="{{ $nav_link['route']}}" :active="$nav_link['active']">
-                                {{ $nav_link['name'] }}
-                            </x-jet-nav-link>
+                        @auth   
+                            @if ( $user == 2 )
+                                <x-jet-nav-link href="{{ $nav_link['route']}}" :active="$nav_link['active']" class="text-3xl font-helloDancing">
+                                    {{ $nav_link['name'] }}
+                                </x-jet-nav-link>
+                            @else
+                                @if ($nav_link['name'] != 'Admin')
+                                    <x-jet-nav-link href="{{ $nav_link['route']}}" :active="$nav_link['active']" class="text-3xl font-helloDancing">
+                                        {{ $nav_link['name'] }}
+                                    </x-jet-nav-link>
+                                @endif
                             @endif
                         @endauth
                     @endforeach
@@ -48,8 +61,10 @@
                     
                 </div>
             </div>
-
-            <div class="hidden md:flex md:items-center md:right-0 md:justify-self-end md:ml-10 md:space-x-4 md:pr-3">
+            <div x-data="{}" 
+                class="hidden md:flex md:items-center md:right-0 md:justify-self-end md:ml-10 md:space-x-4 md:pr-3">
+                <div x-data="{hoverr: false,isClick:false}" class="hidden md:flex md:items-center">
+                </div>  
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="relative ml-3">
@@ -153,25 +168,17 @@
                         </x-slot>
                     </x-jet-dropdown>
                     @else
-                        <a class="inline-flex items-center object-cover w-full h-12 px-3 py-4 font-bold text-black rounded-xl bg-store1-300 hover:bg-store1-600" href="{{route('login')}}" >Login</a> 
+                        <a class="inline-flex items-center object-cover w-full h-12 px-3 py-4 text-xl font-bold text-black transition duration-200 ease-in font-helloDancing rounded-xl bg-store1-100 hover:bg-store1-600" 
+                        href="{{route('login')}}" >Login</a> 
                     @endauth
                 </div>
                 
 
-                <div class="hidden md:flex md:items-center">
-                    <div class="relative ml-1 right-15 ">
-                        <a href="">
-                            <span style="font-size:12px; color: rgb(0,0,0);">
-                                <i class="fas fa-shopping-cart fa-3x"></i>
-                                </span>
-                        </a> 
-                    </div>
-                </div>
             </div>
             
 
             <!-- Hamburger -->
-            <div class="flex items-center -mr-2 md:hidden">
+            <div class="flex items-center h-full -mr-2 md:hidden">
                 <button @click="openn = ! openn" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': openn, 'inline-flex': ! openn }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />

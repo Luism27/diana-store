@@ -17,13 +17,17 @@
         @livewireStyles
         
     </head>
-    <body>
-        <div class="h-full max-h-full font-sans text-gray-900">
-            {{ $slot }}
+    <body class="font-sans antialiased">
+        <x-jet-banner />
+        <div class="min-h-screen text-gray-900 bg-gray-300">
+            <main>
+                {{ $slot }} 
+            </main>
         </div>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
+        @stack('modals')
 
         @livewireScripts
     </body>
